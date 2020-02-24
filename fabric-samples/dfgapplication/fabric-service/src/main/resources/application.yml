@@ -1,0 +1,15 @@
+server:
+  port: 9090
+
+spring:
+  jackson:
+    time-zone: GMT+8
+    serialization:
+      write_dates_as_timestamps: true
+    deserialization:
+      fail_on_unknown_properties: false
+  datasource:
+    username: sp_test
+    password: sp_test
+    url: jdbc:mysql://172.17.3.156:3306/sp_dev?useSSL=false&characterEncoding=utf-8&serverTimezone=UTC&useTimezone=true
+    driver-class-name: com.mysql.jdbc.Driver

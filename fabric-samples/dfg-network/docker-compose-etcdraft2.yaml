@@ -1,0 +1,77 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+version: '2'
+
+volumes:
+  orderer.org2.example.com:
+  orderer.org3.example.com:
+  orderer.org4.example.com:
+  orderer.org5.example.com:
+
+networks:
+  byfn:
+
+services:
+
+  orderer.org2.example.com:
+    extends:
+      file: base/peer-base.yaml
+      service: orderer-base
+    container_name: orderer.org2.example.com
+    networks:
+    - byfn
+    volumes:
+        - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+        - ./crypto-config/ordererOrganizations/org1.example.com/orderers/orderer.org1.example.com/msp:/var/hyperledger/orderer/msp
+        - ./crypto-config/ordererOrganizations/org1.example.com/orderers/orderer.org1.example.com/tls/:/var/hyperledger/orderer/tls
+        - orderer.org2.example.com:/var/hyperledger/production/orderer
+    ports:
+    - 10520:10520
+
+  orderer.org3.example.com:
+    extends:
+      file: base/peer-base.yaml
+      service: orderer-base
+    container_name: orderer.org3.example.com
+    networks:
+    - byfn
+    volumes:
+        - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+        - ./crypto-config/ordererOrganizations/org1.example.com/orderers/orderer.org1.example.com/msp:/var/hyperledger/orderer/msp
+        - ./crypto-config/ordererOrganizations/org1.example.com/orderers/orderer.org1.example.com/tls/:/var/hyperledger/orderer/tls
+        - orderer.org3.example.com:/var/hyperledger/production/orderer
+    ports:
+    - 10530:10530
+
+  orderer.org4.example.com:
+    extends:
+      file: base/peer-base.yaml
+      service: orderer-base
+    container_name: orderer.org4.example.com
+    networks:
+    - byfn
+    volumes:
+        - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+        - ./crypto-config/ordererOrganizations/org1.example.com/orderers/orderer.org1.example.com/msp:/var/hyperledger/orderer/msp
+        - ./crypto-config/ordererOrganizations/org1.example.com/orderers/orderer.org1.example.com/tls/:/var/hyperledger/orderer/tls
+        - orderer.org4.example.com:/var/hyperledger/production/orderer
+    ports:
+    - 10540:10540
+
+  orderer.org5.example.com:
+    extends:
+      file: base/peer-base.yaml
+      service: orderer-base
+    container_name: orderer.org5.example.com
+    networks:
+    - byfn
+    volumes:
+        - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+        - ./crypto-config/ordererOrganizations/org1.example.com/orderers/orderer.org1.example.com/msp:/var/hyperledger/orderer/msp
+        - ./crypto-config/ordererOrganizations/org1.example.com/orderers/orderer.org1.example.com/tls/:/var/hyperledger/orderer/tls
+        - orderer.org5.example.com:/var/hyperledger/production/orderer
+    ports:
+    - 10550:10550
